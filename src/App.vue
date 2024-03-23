@@ -1,11 +1,11 @@
 <template>
   <nav-bar class="navbar-cus" :pages="pages" :languages="languages"></nav-bar>
-  <home-screen ></home-screen>
-  <page-footer :pages="pages" ></page-footer>
+  <router-view  key="$route.fullPath"/>
+
+  <page-footer :pages="pages"></page-footer>
 </template>
 
 <script>
-import homeScreen from "./Screens/HomeScreen.vue";
 import navBar from "./components/NavBar.vue";
 import pageFooter from "./components/pageFooter.vue";
 import { store } from "./reactive/store.js";
@@ -26,9 +26,9 @@ export default {
   data() {
     return {
       store,
-      languages:[
-        {name:'ar',text:'العربية'},
-        {name:'en',text:'English'},
+      languages: [
+        { name: "ar", text: "العربية" },
+        { name: "en", text: "English" },
       ],
       pages: [
         {
@@ -41,25 +41,25 @@ export default {
           id: 2,
           en_name: "About us",
           ar_name: "من نحن",
-          link: "/aboutus",
+          link: "aboutus",
         },
         {
           id: 3,
           en_name: "Our Services",
           ar_name: "خدماتنا",
-          link: "/services",
+          link: "services",
           data: [
             {
               id: 11,
               en_name: "Consaltincy",
               ar_name: "الاستشارات الإدارية",
-              link: "/services/Consaltincy",
+              link: "/Consaltincy",
             },
             {
               id: 12,
               en_name: "Quality Engineering",
               ar_name: "إدارة الموارد البشرية",
-              link: "/services/qualityEng",
+              link: "/qualityEng",
             },
           ],
         },
@@ -67,13 +67,13 @@ export default {
           id: 4,
           en_name: "Courses",
           ar_name: "التدريب والتأهيل",
-          link: "/courses",
+          link: "courses",
           data: [
             {
               id: 31,
               en_name: "German Language",
               ar_name: "اللغة الألمانية",
-              link: "/courses/germanLang",
+              link: "/germanLang",
             },
             {
               id: 32,
@@ -97,25 +97,25 @@ export default {
               id: 35,
               en_name: "English",
               ar_name: "الإدارة وبناء القدرات",
-              link: "/english",
+              link: "/power",
             },
             {
               id: 36,
               en_name: "English",
               ar_name: "المالية والمحاسبة",
-              link: "/english",
+              link: "/accounting",
             },
             {
               id: 37,
               en_name: "English",
               ar_name: "الجودة والبيئة والسلامة",
-              link: "/english",
+              link: "/enviroment",
             },
             {
               id: 38,
               en_name: "English",
               ar_name: "دورات مبرمجة خاصة",
-              link: "/english",
+              link: "/custome",
             },
           ],
         },
@@ -123,61 +123,25 @@ export default {
           id: 5,
           en_name: "Network",
           ar_name: "عملائنا",
-          link: "/network",
+          link: "network",
         },
         {
           id: 6,
           en_name: "Carrer",
           ar_name: "وظائف",
-          link: "/carrer",
+          link: "carrer",
         },
         {
           id: 7,
           en_name: "Contact us",
           ar_name: "اتصل بنا",
-          link: "/contactus",
+          link: "contact",
         },
-        ///////
-        //    {
-        //         id: 112,
-        //         en_name: "Home",
-        //         ar_name: "الرئيسية",
-        //         link: "/",
-        //     },
-        //     {
-        //         id: 223,
-        //         en_name: "About us",
-        //         ar_name: "من نحن",
-        //         link: "/aboutus",
-        //     },
-        //     {
-        //         id: 1123,
-        //         en_name: "Home",
-        //         ar_name: "الرئيسية",
-        //         link: "/",
-        //     },
-        //     {
-        //         id: 2243,
-        //         en_name: "About us",
-        //         ar_name: "من نحن",
-        //         link: "/aboutus",
-        //     },  {
-        //         id: 1162,
-        //         en_name: "Home",
-        //         ar_name: "الرئيسية",
-        //         link: "/",
-        //     },
-        //     {
-        //         id: 2273,
-        //         en_name: "About us",
-        //         ar_name: "من نحن",
-        //         link: "/aboutus",
-        //     },
       ],
     };
   },
 
-  components: { homeScreen, navBar, pageFooter },
+  components: { navBar, pageFooter },
 };
 </script>
 
