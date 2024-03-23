@@ -1,11 +1,11 @@
 <template>
-    <footer class="outerArea">
+    <div class="outerArea">
        <!-- This is the first are  where the logo and socials go -->
             <div class="social-area">
                 <div class="logo-area">
                     
-                    <img src="/hera-logo-text-only.png" alt="Elhira Text" class="logo-text" />
-                    <img src="/logo-hera-without-text.png" alt="Elhira logo" class="logo" />
+                    <img src="/images/hera-logo-text-only.png" alt="Elhira Text" class="logo-text" />
+                    <img src="/images/logo-hera-without-text.png" alt="Elhira logo" class="logo" />
               
                 </div>
 <div class="social-media">
@@ -42,7 +42,7 @@
             <div class="links-area">
                
                 <ul>
-                    <div class="links-area-header">روابط سريعة</div>
+                    <div class="links-area-header">{{ ar_links }}</div>
                     <li class="quick-links-text" v-for="page in filteredPages" :key="page.id">
                         <a class="quick-links" :href="page.link">
                         {{ page.ar_name }}
@@ -52,20 +52,27 @@
                 <div class="links"></div>
             </div>
             <div class="contact-area">
+                <div class="contactus">
+                <div class="contactus-header">{{ ar_contactus.header }} </div>
+                <div class="contactus-text"><a href="/contactus" class="contactus-text">{{ ar_contactus.text}}</a></div>
+            </div>
 
-                <div class="copyright"></div>
+                <div class="copyright">{{ ar_copyright }}{{ currentYear }}</div>
             </div>
 
 
-    </footer>
+        </div>
 </template>
-
+ 
 <script>
 export default{
 props:['pages'],
 computed:{
     filteredPages(){
         return this.pages.filter(i => i.id !== 7);
+    }
+    ,currentYear(){
+return "2023";
     }
 
 },
@@ -74,7 +81,19 @@ computed:{
             facebook:"https://www.facebook.com/sumuwads/",
             instagram:"https://www.instagram.com/",
             linkedin:"https://www.linkedin.com/",
-          
+            ar_links:"روابط سريعة",
+            en_links:"Quick links",
+            ar_contactus:{
+                header:"اتصل بنا",
+        text:"ارسل استفسارك هنا"
+    },
+            en_contactus:{
+                header:"Contact Us",
+        text:"send your query here"
+    },
+            ar_copyright:"@جميع الحقوق محفوظة الهيرة ",
+            en_copyright:"@all copyrights reserved elhira ",
+
 
         };
     }
@@ -84,16 +103,19 @@ computed:{
 </script>
 
 <style scoped>
-footer{
-    height: 60vh;
-    background-color: #111;
 
-}
 
 .outerArea{
+    width: 100vw;
+    height: 400px;
+    background-color: #000;
+    bottom: 0;
     display: flex;
     flex-direction: row;
     direction: rtl;
+
+
+
 }
 
 /* ////////////////////////////////////////////////////////////////// */
@@ -101,24 +123,26 @@ footer{
 /* ////////////////////////////////////////////////////////////////// */
 
 .social-area{
-    width: 30%;
+    width: 40%;
     height: 100%;
     /* background-color: ; */
-
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
  
 }
 
 
 .logo-area{
-   margin: 0;
-padding:0;
+
 width: 100%;
-height: 50%;
+/* height: 50%; */
 display: flex;
-/* flex-direction: column; */
-justify-content:center;
-align-items: flex-end;
+flex-direction: row;
+/* align-content: center; */
+justify-content: center;
+
 }
 
 .logo{
@@ -148,15 +172,15 @@ height: 20%;
 }
 
 .facebook{
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     fill: #36383a;
 
     
 }
 
 .facebook:hover{
-    fill: #4f5153;
+    fill: #CCB27F;
     
 }
 
@@ -164,8 +188,8 @@ height: 20%;
 
 .instagram{
     /* width: 10px; */
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     fill: #36383a;
 
 
@@ -173,20 +197,20 @@ height: 20%;
 
 .instagram:hover{
     /* content: '<radialGradient id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1" cx="19.38" cy="42.035" r="44.899" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"></stop><stop offset=".328" stop-color="#ff543f"></stop><stop offset=".348" stop-color="#fc5245"></stop><stop offset=".504" stop-color="#e64771"></stop><stop offset=".643" stop-color="#d53e91"></stop><stop offset=".761" stop-color="#cc39a4"></stop><stop offset=".841" stop-color="#c837ab"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><radialGradient id="yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2" cx="11.786" cy="5.54" r="29.813" gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4168c9"></stop><stop offset=".999" stop-color="#4168c9" stop-opacity="0"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><path fill="#fff" d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z"></path><circle cx="31.5" cy="16.5" r="1.5" fill="#fff"></circle><path fill="#fff" d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z"></path>'; */
-    fill:#4f5153;
+    fill:#CCB27F;
 
 }
 
 
 .linkedin{
     /* width: 10px; */
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     fill: #36383a;
 
 }
 .linkedin:hover{
-    fill: #4f5153;
+    fill: #CCB27F;
 }
 
 
@@ -205,14 +229,13 @@ height: 20%;
 
 .links-area{
     width: 40%;
-    height: 60vh;
+  
     /* background-color: red; */
 /* align-items: center; */
-
-display: grid;
-grid-template-columns: 2;
-grid-template-rows: 6;
-grid-area: auto;
+/* display: grid; */
+/* grid-template-columns: 2; */
+/* grid-template-rows: 6; */
+/* grid-area: auto; */
 
 
 }
@@ -245,7 +268,7 @@ margin-inline: 10px;
 }
 
 .quick-links:hover{
-    color: #aaa;
+    color: #CCB27F;
 }
 
 
@@ -257,8 +280,39 @@ margin-inline: 10px;
 .contact-area{
     width: 30%;
     height: 100%;
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: blue; */
+    color: white;
 }
 
+.contactus{
+    padding: 30px;
+    margin: 10px;
+}
+.contactus-header{
+    margin: 0;
+/* margin-inline: 20px; */
+margin-top: 10px;
+font-size: 1.5rem;
+color:white;
+font-weight: bold;
+padding: 0;
+}
 
+.contactus-text{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.contactus-text:hover{
+    color: #CCB27F;
+}
+
+.copyright{
+      font-size: 0.7rem;
+
+}
 </style>
