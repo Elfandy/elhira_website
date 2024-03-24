@@ -29,14 +29,16 @@ export default {
       // Get the current scroll position
       const currentScrollPosition = this.publicStore.scrollValue;
       // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
-      if (currentScrollPosition <= 0) {
+      if (currentScrollPosition <= 30) {
         this.showNavbar = true;
         this.showWhiteNavbar = false;
       }
       // Here we determine whether we need to show or hide the navbar
       // Stop executing this function if the difference between
       // current scroll position and last scroll position is less than some offset
-
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 50) {
+    return
+  }
       this.showNavbar = currentScrollPosition < this.lastScrollPosition;
       this.lastScrollPosition = currentScrollPosition;
       if (currentScrollPosition >= window.screen.availHeight / 5) {
@@ -80,7 +82,9 @@ export default {
 <style scoped>
 /* Mobile Screen */
 
-.top-bar-box{}
+.top-bar-box{
+    
+}
 
 
 /* //////////////////////////////////////////////////////////////////////// */
