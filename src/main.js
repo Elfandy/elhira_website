@@ -6,12 +6,21 @@ import OurCarrer from "./Screens/OurCarrer.vue";
 import OurCourses from "./Screens/OurCourses.vue";
 import OurNetwork from "./Screens/OurNetwork.vue";
 import NotFound from "./Screens/NotFound.vue";
+import ExtraPage from "./Screens/extraPage.vue";
+import GermanLang from "./Screens/subScreen/GermanLang.vue";
+
+
+
+
+
+
 
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import ExtraPage from "./Screens/extraPage.vue";
-import GermanLang from "./Screens/subScreen/GermanLang.vue";
+import {createPinia} from 'pinia';
+
+
 
 const app = createApp(App);
 
@@ -56,4 +65,5 @@ return new Promise((resolve) => {
 });
 
 app.use(router);
+app.use(createPinia());
 app.mount("#app");

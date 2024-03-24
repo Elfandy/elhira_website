@@ -13,20 +13,13 @@ export default {
   },
  beforeUnmount() {
   window.removeEventListener("scroll",this.onScroll);
-
-
   },
- 
-
-  
-
   methods: {
 onScroll(){
 
 },
 
   },
-
   
   data(){
     return {
@@ -48,7 +41,7 @@ onScroll(){
         {
           title:'هندسة الجودة',
           text:' تهدف هندسة الجودة إلى تحسين جودة المنتجات',
-          link:'/contacus',
+          link:'/co,ntacus',
           buttonText:'تواصل معنا',
           image:"/images/image3.jpg",
         },

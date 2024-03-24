@@ -337,7 +337,7 @@ export default {
       <template v-for="(slide,index) in slides"  :key="index">
         <input  class="carousel-open"  type="radio" :id="'carousel-'+index" name="carousel" aria-hidden="true" hidden="" @click="setCounter(index)"
         :checked="index === 0">
-        <div class="carousel-item">
+        <div class="carousel-item no-select">
 
           <div v-if="slide.title !== 'home'" class="carousel-data">
               <div class="carousel-Title no-select">
@@ -353,7 +353,7 @@ export default {
             
             </div>
 
-            <div v-else class="logo-center">
+            <div v-else class="logo-center no-select">
               <img src="/images/hera-logo-text-only-ar.png" alt="elhira_name" class="logo">
             </div>
       <div class="blur-image"></div>
@@ -368,8 +368,8 @@ export default {
      
         <template v-for="(s,index) in slides" :key="index">
         
-        <label :for="'carousel-'+prevSlideCheck" class="carousel-control prev " :class="[('control-'+index),currentSlide===index? 'control-show':'']">‹</label>
-        <label :for="'carousel-'+nextSlideCheck" class="carousel-control next " :class="[('control-'+index),currentSlide===index? 'control-show':'']">›</label>
+        <label :for="'carousel-'+prevSlideCheck" class="carousel-control prev no-select" :class="[('control-'+index),currentSlide===index? 'control-show':'']">‹</label>
+        <label :for="'carousel-'+nextSlideCheck" class="carousel-control next no-select" :class="[('control-'+index),currentSlide===index? 'control-show':'']">›</label>
       </template>
     </template>
 
@@ -377,7 +377,7 @@ export default {
 
         <ol class="carousel-indicators">
             <li v-for="(s,index) in slides" :key="index">
-                <label :for="'carousel-'+index" class="carousel-bullet" :class="bulletColor(index)" @click="setCounter(index)">•</label>
+                <label :for="'carousel-'+index" class="carousel-bullet no-select" :class="bulletColor(index)" @click="setCounter(index)">•</label>
             </li>
            
         </ol>

@@ -1,6 +1,6 @@
 <template>
   <nav-bar class="navbar-cus" :pages="pages" :languages="languages"></nav-bar>
-  <router-view  key="$route.fullPath"/>
+  <router-view />
 
   <page-footer :pages="pages"></page-footer>
 </template>
@@ -8,7 +8,11 @@
 <script>
 import navBar from "./components/NavBar.vue";
 import pageFooter from "./components/pageFooter.vue";
-import { store } from "./reactive/store.js";
+import {usePublicStore} from "./store/pupValueStore.js";
+import {mapStores} from 'pinia';
+
+
+
 export default {
   mounted() {
     window.addEventListener("scroll", this.onScroll);
@@ -16,16 +20,22 @@ export default {
   beforeUnmount() {
     window.removeEventListener("scroll", this.onScroll);
   },
+computed:{
+  ...mapStores(usePublicStore),
+
+},
+
+  
   methods: {
     onScroll() {
-      this.store.scrollValueSet(
+      this.publicStore.setScrollValue(
         window.screenY || document.documentElement.scrollTop
       );
     },
   },
   data() {
     return {
-      store,
+      
       languages: [
         { name: "ar", text: "العربية" },
         { name: "en", text: "English" },
