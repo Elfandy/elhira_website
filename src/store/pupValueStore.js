@@ -1,9 +1,8 @@
 import {defineStore} from 'pinia';
 
-export const usePublicStore = defineStore('public',{   
-    
+export const usePublicStore = defineStore('public',{
     state: () => ({
-        language: 'en',
+        language: 'ar',
         scrollValue:0
     }),
     getters: {

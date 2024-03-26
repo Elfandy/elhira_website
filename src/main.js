@@ -30,7 +30,6 @@ const routes = [
     { path: "/carrer", component: OurCarrer },
     { path: "/contact", component: ContactUs },
     { path: "/network", component: OurNetwork },
-
     {
         path: "/services",
         component: OurServices,
@@ -64,6 +63,6 @@ return new Promise((resolve) => {
   })      }
 });
 
-app.use(router);
 app.use(createPinia());
+app.use(router);
 app.mount("#app");

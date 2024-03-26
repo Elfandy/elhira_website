@@ -28,6 +28,7 @@ export default {
     },
 
   methods: {
+   
 
     bulletColor(index){
       if(index===this.currentSlide){
@@ -91,6 +92,213 @@ export default {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+/* Mobile Site */
+
+.carousel {
+    position: relative;
+    height: 100%;
+    /* box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64); */
+    /* margin-top: 26px; */
+}
+
+.carousel-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 90vh ;
+    
+}
+
+.carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+}
+
+.carousel-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@-webkit-keyframes zoom {
+  0% {
+        transform: scale(1,1);
+   }
+   50% {
+        transform: scale(1.1,1.1);
+   }
+   100%{
+    transform: scale(1,1);
+
+   }
+}
+
+/* Standard syntax */
+@keyframes zoom {
+   0% {
+        transform: scale(1,1);
+   }
+   50% {
+        transform: scale(1.1,1.1);
+   }
+   100%{
+    transform: scale(1,1);
+
+   }
+}
+
+
+
+.carousel-image{
+  -webkit-animation: zoom 60s infinite; /* Chrome, Safari, Opera */
+    animation: zoom 60s infinite;
+    display: block;
+    height: 90vh;
+    width: 100vw;
+  object-fit: cover;
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 1.5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+    
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    margin: 0 0px;
+}
+
+.carousel-bullet {
+    color: rgba(200, 200, 200, 0.5);
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+
+
+
+.colored-bullet {
+  color: #428bca;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+
+.blur-image {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  backdrop-filter: blur(0.1em);
+  width: 100vw;
+  height: 90vh;
+  z-index: 2;
+
+}
+
+
+
+/* //////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////// */
+
+.logo-center{
+  position: absolute;
+  z-index: 10;
+  object-fit: cover;
+
+
+}
+.logo{
+  width:20rem;
+  height: 10rem;
+  /* object-fit: cover; */
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+
+
+.carousel-data{
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(255, 255, 255,0.9);
+}
+
+.carousel-Title{
+  font-size: 1.5rem;
+  padding: 5px;
+  margin: 0;
+ 
+
+}
+
+.carousel-text{
+
+
+  font-size: 20px;
+  margin-top:-50px;
+}
+
+.carousel-button{
+  font-size: 18px;
+  padding: 5px;
+  padding-inline:20px;
+  background-color: #CCB27F;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;text-decoration: none;
+
+}
+.carousel-button:hover{
+  background-color: #c49e4c;
+
+}
+
+
+
+/* Desktop site */
+@media screen and (min-width: 768px){
 .carousel {
     position: relative;
     height: 100%;
@@ -173,11 +381,12 @@ export default {
     font-size: 30px;
     height: 40px;
     line-height: 35px;
-    /* font-size: 10rem; */
+
     position: absolute;
     top: 50%;
-    -webkit-transform: translate(0, -50%);
     cursor: pointer;
+
+    -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
     text-align: center;
@@ -212,34 +421,49 @@ export default {
     margin: 0;
     padding: 0;
     position: absolute;
-    bottom: 1.5%;
+    bottom: 7px;
     left: 0;
     right: 0;
     text-align: center;
     z-index: 10;
+    height: 60px;
+    text-align: center;
+
 }
 
 .carousel-indicators li {
     display: inline-block;
     margin: 0 0px;
+   
+
 }
 
 .carousel-bullet {
     color: rgba(200, 200, 200, 0.5);
     cursor: pointer;
     display: block;
-    font-size: 35px;
+    font-size: 32px;
+    text-align: center;
+    justify-content: center;
+    transition: 0.2s all ease-out;
+
 }
 
 .carousel-bullet:hover {
     color: #aaaaaa;
+    font-size: 38px;
 }
 
 
+.colored-bullet:hover {
 
+color: #428bca;
+font-size: 45px;
+} 
 .colored-bullet {
 
   color: #428bca;
+  font-size: 45px;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////// */
@@ -326,6 +550,10 @@ export default {
 }
 .carousel-button:hover{
   background-color: #c49e4c;
+
+}
+
+
 
 }
 
