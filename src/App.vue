@@ -26,7 +26,6 @@ import {usePublicStore} from "./store/pupValueStore.js";
 import {mapStores} from 'pinia';
 
 
-
 export default {
   mounted() {
     document.onreadystatechange = ()=>{
@@ -54,8 +53,7 @@ computed:{
   },
   data() {
     return {
-      isLoaded:false,
-      
+      isLoaded:true,
       languages: [
         { name: "ar", text: "العربية" },
         { name: "en", text: "English" },

@@ -1,28 +1,31 @@
-
-
 <script>
 import  carouselImages  from '../components/carouselImages.vue';
-// import RoundedDataBox from '../components/RoundedDataBox.vue';
+import RoundedDataBox from '../components/RoundedDataBox.vue';
+
+
 export default {
   components: {
-    carouselImages
+    carouselImages,RoundedDataBox
   },
   mounted() {
+    Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
+    this.isLoaded = true;
+});
+  
     window.addEventListener("scroll", this.onScroll);
-   
+
   },
  beforeUnmount() {
   window.removeEventListener("scroll",this.onScroll);
   },
   methods: {
-onScroll(){
-
-},
+    
 
   },
   
   data(){
     return {
+      isLoaded:false,
       slides:[
         {
           title:'home',
@@ -64,7 +67,7 @@ onScroll(){
           text:'تصميمها وتقديمها لمجموعة محددة من الأشخاص ، مثل موظفي شركة أو أعضاء منظمة',
           link:'/contacus',
           buttonText:'تواصل معنا',
-          image:"/images/image9.jpg",
+          image:"/images/image14.jpg",
         },
       ],
       ar_aboutus:`مركز متخصص في الإستشارات الإدارية والتدريب, تأسس سنة 1997. يقدم الحلول الحلول المبتكرة والفعالة للمؤسسات الإنتاجية \r\nوالخدميه والنفطيه ويساهم في وضع التطوير الاستراتيجيات وتطبيقها
@@ -108,7 +111,137 @@ onScroll(){
 
 
 <style scoped>
+/* //////////////////////////////////// */
+/* THis is the loading style */
 
+.page-loader{
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: 999;
+  background-color: white;
+  position: fixed;
+}
+
+.stop-page-loader{
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: -1;
+  background-color: white;
+  position: none;
+  display: none;
+}
+.sk-folding-cube {
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccb27f;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
 
 .no-select{
   -webkit-touch-callout: none; /* iOS Safari */
@@ -162,11 +295,24 @@ background-color: #ccb27f;
   font-size: 1.2rem;
   white-space: pre;
 }
+
+
+
+
 </style>
 
 
 <template>
+  <div   :class="isLoaded?'stop-page-loader':'page-loader'">
+      <div class="sk-folding-cube">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div>
+  </div>
 
+<div  >
  <carousel-images :slides="slides"></carousel-images>
   <div class="short-presentation">
     <div class="short-presentation-hint">تقديم</div>
@@ -176,6 +322,49 @@ background-color: #ccb27f;
     
 
   </div>
+<h1>Hello world how are you doing </h1>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<rounded-data-box v-for="(data,index) in slides" :key="index" :data="data"></rounded-data-box>
+</div>
 </template>

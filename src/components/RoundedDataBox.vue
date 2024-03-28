@@ -28,17 +28,17 @@ export default {
 
 .box{
     
-    width: 90vw;
+    width: 200px;
     margin: 20px;
-    height: 250px;
+    height:  fit-content;
     box-shadow: 10px 10px 15px rgba(245, 22, 22, 0.36);
     border-radius: 20px;
     transition: 1s all ease-in-out;
 
 }
 .box:hover{
-    height: 600px;
-    width: 92vw;
+    height: fit-content;
+    width: 200px;
 }
 
 .box:hover .text{
@@ -69,6 +69,7 @@ padding: 1px;
 }
 
 .text{
+    padding:10px;
     display: none;
     transition: 1s all ease-in-out;
 

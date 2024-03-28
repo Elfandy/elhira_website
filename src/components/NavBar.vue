@@ -332,7 +332,7 @@ export default {
 
 .dropdown-menu {
     display: none;
-
+    transition: 1s all ease-in-out;
     width: 400px;
     background-color: white;
     z-index: 1;
@@ -615,7 +615,8 @@ export default {
     /* //////////////////////////////////////////////////////////////////////// */
 
     .links:hover+.dropdown-menu,
-    .dropdown-menu:hover {
+    .dropdown-menu:hover ,
+    .links:active+ .dropdown-menu{
         display: grid;
     }
 
